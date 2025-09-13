@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aroma Perfecto — Demo</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Oswald:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="vista.css">
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img
+          src="assent Imagenes\logo.png"
+          alt="Logo Aroma Perfecto" style="width: 180px;height:180px;object-fit:contain;cursor:pointer;" />
+      </div>
+      <div style="text-align: center;">
+          <h1> Cafeteria Aroma Perfecto</h1>
+          <p>
+            20 años tostando historias — Café de especialidad, cursos y catas.
+          </p>
+      </div>
+    </div>
+      <nav>
+        <a class="btn" id="openLogin">Login</a>
+        <a class="btn secondary" id="openProfile">Mi Panel</a>
+        <a class="btn secondary" id="openSuscripcion">Suscripción</a>
+      </nav>
+  </header>
+
+  <main>
+    <aside>
+      <div class="card filters">
+        <h3>Filtros</h3>
+        <div class="filter-group">
+          <label>Región</label>
+          <select id="filterRegion">
+            <option value="all">Todas</option>
+            <option>Colombia</option>
+            <option>Etiopía</option>
+            <option>Brasil</option>
+            <option>Guatemala</option>
+            <option>Perú</option>
+            <option>Costa Rica</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Proceso</label>
+          <select id="filterProcess">
+            <option value="all">Todos</option>
+            <option>Lavado</option>
+            <option>Naturales</option>
+            <option>Honey</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Nivel de tostado</label>
+          <select id="filterRoast">
+            <option value="all">Todos</option>
+            <option>Claro</option>
+            <option>Medio</option>
+            <option>Oscuro</option>
+          </select>
+        </div>
+        <hr style="margin:12px 0">
+        <h3>Preferencias</h3>
+        <div class="preferences card" style="padding:12px">
+          <label>Perfil de sabor</label>
+          <div>
+            <span class="tag" data-flavor="Frutal">Frutal</span>
+            <span class="tag" data-flavor="Cítrico">Cítrico</span>
+            <span class="tag" data-flavor="Chocolate">Chocolate</span>
+            <span class="tag" data-flavor="Especiado">Especiado</span>
+          </div>
+          <div style="margin-top:12px">
+            <label>Método preferido</label>
+            <select id="prefMethod">
+              <option>V60</option>
+              <option>Espresso</option>
+              <option>Prensa Francesa</option>
+            </select>
+          </div>
+        </div>
+        <hr style="margin:12px 0">
+        <h3>Reservas</h3>
+        <div style="margin-top:6px">
+          <p class="muted">Reservar catas y cursos presenciales. Suscriptores premium reciben 1 cata gratuita/mes.</p>
+          <a class="btn" id="openBooking">Ver calendario</a>
+        </div>
+      </div>
+      <div style="height:18px"></div>
+      <div class="card">
+        <h3>Oferta</h3>
+        <p class="muted">Código AROMA20 → 15% de descuento de por vida al registrarte con él.</p>
+        <p style="margin:8px 0"><strong>Baristas</strong> verificados obtienen 20% en Café Verde y Equipamiento.</p>
+        <a class="btn secondary" id="howBarista">Cómo verificar</a>
+      </div>
+    </aside>
+
+    <section>
+      <div class="card">
+        <div class="toolbar">
+          <div>
+            <h2 style="margin:0;font-family:'Oswald',sans-serif">Catálogo de Café</h2>
+            <p class="muted" style="margin:4px 0 0 0">Explora orígenes, notas de cata y trazabilidad.</p>
+          </div>
+          <div>
+            <input id="search" placeholder="Buscar..."
+              style="padding:8px;border-radius:8px;border:1px solid rgba(62,39,35,0.06)" />
+            <a class="btn" id="viewCart">Ver carrito (<span id="cartCount">0</span>)</a>
+          </div>
+        </div>
+        <div id="tabla-productos"></div>
+        <h4 style="margin-top:18px;"> Descripciones de los productos</h4>
+        <ul id="lista-descripciones"></ul>
+      </div>
+
+      <div class="card" id="trazabilidad">
+        <h3> Trazabilidad y Notas de Cata</h3>
+        <div id="detalleTrazabilidad">
+        </div>
+      </div>
+
+      <div class="card" id="guias">
+        <h3> Guías de Preparación</h3>
+        <ul>
+          <li><a href="#">Guía V60</a></li>
+          <li><a href="#">Guía Espresso</a></li>
+          <li><a href="#">Guía Prensa Francesa</a></li>
+          <li><a href="#">Guía Chemex</a></li>
+        </ul>
+      </div>
+
+      <div class="card" id="impacto">
+        <img
+          src="C:\Users\Duoc\Downloads\assent Imagenes-20250913T120500Z-1-001\assent Imagenes\impacto social.png"
+          alt="Impacto social" style="width: 30px;%;height: 30px;%;object-fit:contain;" />
+        <h3>Impacto Social</h3>
+        <p>Con cada compra apoyas a comunidades productoras de café en Latinoamérica, promoviendo comercio justo y
+          prácticas sostenibles.</p>
+      </div>
+
+      <div class="card" id="comunidad">
+        <img
+          src="assent Imagenes\comunidad.png"
+          alt="Impacto social" style="width: 30px;%;height: 30px;%;object-fit:contain;" />
+        <h3>Comunidad Cafetera</h3>
+        <form id="formComunidad">
+          <label>Comparte tu experiencia:</label>
+          <textarea id="comentario" rows="2" style="width:100%"></textarea>
+          <button class="btn" type="submit">Publicar</button>
+        </form>
+        <div id="comentarios"></div>
+      </div>
+
+      <div class="card" id="calculadora">
+        <img
+          src="assent Imagenes\pesa.jpg"
+          alt="Impacto social" style="width: 30px;%;height: 30px;%;object-fit:contain;" />
+        <h3> Medidadas de Preparación</h3>
+        <label>Método:</label><br>
+        <select id="calcMetodo">
+          <option>V60</option>
+          <option>Espresso</option>
+          <option>Prensa Francesa</option>
+        </select><br>
+        <label>Cantidad de café (g):</label><br>
+        <input type="number" id="calcCafe" value="15" min="1" /><br>
+        <label>Relación café:agua</label><br>
+        <input type="number" id="calcRelacion" value="16" min="1" /><br>
+        <button class="btn" id="calcular">Calcular Agua</button><br>
+        <div id="resultadoCalc" style="margin-top:10px"></div><br>
+      </div>
+
+      <div>
+        <div id="loginTabs">
+          <button class="btn" id="tabLogin">Iniciar Sesión</button>
+          <button class="btn secondary" id="tabRegistro">Registrarse</button>
+        </div>
+        <form id="formLogin" style="margin-top:12px;">
+          <label>Email:</label>
+          <input type="email" id="loginEmail" required>
+          <label>Contraseña:</label>
+          <input type="password" id="loginPass" required>
+          <button class="btn" type="submit">Ingresar</button>
+          <div id="mensajeLogin" style="margin-top:10px;"></div>
+        </form>
+        <form id="formRegistro" style="display:none;margin-top:12px;">
+          <label>Email:</label>
+          <input type="email" id="regEmail" required>
+          <label>Contraseña:</label>
+          <input type="password" id="regPass" required>
+          <label>Código de descuento:</label>
+          <input type="text" id="regCodigo" placeholder="Opcional">
+          <label>
+            <input type="checkbox" id="regBarista"> Soy barista profesional
+          </label>
+          <button class="btn" type="submit">Registrarse</button>
+          <div id="mensajeRegistro" style="margin-top:10px;"></div>
+        </form>
+      </div>
+      <div class="modal" id="modal">
+        <div class="modal-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="close-modal" data-close="modal" aria-label="Cerrar">✕</button>
+            <button class="menu-modal" aria-label="Volver al menú">Volver al menú</button>
+          </div>
+          <div id="modal-content"></div>
+        </div>
+      </div>
+      <div class="modal" id="bookingModal">
+        <div class="modal-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="close-modal" data-close="bookingModal" aria-label="Cerrar">✕</button>
+            <button class="menu-modal" aria-label="Volver al menú">Volver al menú</button>
+          </div>
+          <div>Calendario de reservas (demo)</div>
+          <div>
+            <h4>Reserva tu experiencia</h4>
+            <form id="formReserva">
+              <label>Fecha:</label>
+              <input type="date" id="fechaReserva" required min="<?= date('Y-m-d') ?>">
+              <label>Hora:</label>
+              <select id="horaReserva" required>
+                <option value="">Selecciona una hora</option>
+                <option>10:00</option>
+                <option>12:00</option>
+                <option>15:00</option>
+                <option>17:00</option>
+              </select>
+              <button class="btn" type="submit" style="margin-top:10px;">Reservar</button>
+            </form>
+            <div id="mensajeReserva" style="margin-top:12px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="loginModal">
+        <div class="modal-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="close-modal" data-close="loginModal" aria-label="Cerrar">✕</button>
+            <button class="menu-modal" aria-label="Volver al menú">Volver al menú</button>
+          </div>
+          <div>Formulario de login/registro (demo)</div>
+        </div>
+      </div>
+      <div class="modal" id="cartModal">
+        <div class="modal-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="close-modal" data-close="cartModal" aria-label="Cerrar">✕</button>
+            <button class="menu-modal" aria-label="Volver al menú">Volver al menú</button>
+          </div>
+          <div id="cart-content"></div>
+        </div>
+      </div>
+      <div class="modal" id="suscripcionModal">
+        <div class="modal-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="close-modal" data-close="suscripcionModal" aria-label="Cerrar">✕</button>
+            <button class="menu-modal" aria-label="Volver al menú">Volver al menú</button>
+          </div>
+          <div>Suscripción mensual (demo)</div>
+        </div>
+      </div>
+      <div class="modal" id="perfilModal">
+        <div class="modal-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <button class="close-modal" data-close="perfilModal" aria-label="Cerrar">✕</button>
+            <button class="menu-modal" aria-label="Volver al menú">Volver al menú</button>
+          </div>
+          <div>Perfil cafetero (demo)</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart" id="floatingCart">🛒 <span id="floatCount">0</span> — <strong>$<span
+        id="floatTotal">0</span></strong></div>
+
+  <footer>
+    <p>Aroma Perfecto — Trazabilidad, comunidad y educación. © 2025</p>
+  </footer>
+  <script src="funciones.js"></script>
+
+</body>
+
+</html>
